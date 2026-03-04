@@ -1,1 +1,0 @@
-from .dummy_data import resume_data as dummy_resume_data
