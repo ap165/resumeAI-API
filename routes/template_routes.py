@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, send_file
-from app.models import dummy_resume_data as data
-from app import templatePath
+from models import dummy_resume_data as data
+from __init__ import templatePath
 
 templates = Blueprint('templates', __name__, url_prefix='/templates', template_folder=templatePath, static_folder='static')
 

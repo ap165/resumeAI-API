@@ -1,5 +1,5 @@
 from flask import Blueprint, send_file, render_template, make_response, request
-from app import templatePath
+from __init__ import templatePath
 from weasyprint import HTML
 import uuid
 # from app.models import dummy_resume_data as data

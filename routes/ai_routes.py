@@ -1,4 +1,4 @@
-from app.services import get_ai_response
+from services import get_ai_response
 from flask import Blueprint, request, jsonify
 
 ai = Blueprint('ai', __name__, url_prefix='/ai')

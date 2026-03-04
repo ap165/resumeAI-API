@@ -1,5 +1,5 @@
 import requests
-from app import API_KEY
+from __init__ import API_KEY
 
 
 def get_ai_response(prompt):
