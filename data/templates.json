@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "key": "modern",
+    "desc": "Modern split layout with dark left sidebar and clean content sections."
+  },
+  {
+    "id": 2,
+    "key": "sidebar",
+    "desc": "Bold navy sidebar template with structured profile, experience, and education blocks."
+  },
+  {
+    "id": 3,
+    "key": "two_tone_professional",
+    "desc": "Professional two-tone design with gradient header and cyan-accented sections."
+  },
+  {
+    "id": 4,
+    "key": "minimalist",
+    "desc": "Minimal ATS-friendly single-column resume with clean typography and compact spacing."
+  },
+  {
+    "id": 5,
+    "key": "creative_sidebar",
+    "desc": "Creative dark-sidebar layout with warm accent lines and card-style experience blocks."
+  },
+  {
+    "id": 6,
+    "key": "elegant_classic",
+    "desc": "Elegant classic serif resume with centered header and timeless styling."
+  },
+  {
+    "id": 7,
+    "key": "tech_one_pager",
+    "desc": "Tech-themed dark one-pager featuring panel sections and highlighted skill tags."
+  },
+  {
+    "id": 8,
+    "key": "two_column_clean",
+    "desc": "Clean two-column professional layout with a light details column and focused main content."
+  },
+  {
+    "id": 9,
+    "key": "timeline",
+    "desc": "Timeline-driven resume emphasizing career progression with a vertical experience track."
+  },
+  {
+    "id": 10,
+    "key": "infographic",
+    "desc": "Infographic-inspired layout with a colored side panel and skill gauge visuals."
+  },
+  {
+    "id": 11,
+    "key": "compact_one_page",
+    "desc": "Dense compact one-page format optimized to fit comprehensive content efficiently."
+  }
+]
