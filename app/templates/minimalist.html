@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Resume</title>
+
+  <style>
+    /* A4 page + safe printing margins */
+    @page { size: A4; margin: 0mm; }
+    html, body { height: 100%; margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* Outer page padding so content doesn't touch the edge in PDF */
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #111;
+      padding: 10mm;            /* matches @page margin */
+      font-size: 13px;
+    }
+
+    /* Top header (name + contact) */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    header h1 {
+      font-size: 30px;
+      margin: 0;
+      letter-spacing: 0.5px;
+    }
+    .contact {
+      font-size: 12px;
+      color: #444;
+      text-align: right;
+      line-height: 1.45;
+    }
+
+    /* Two-column layout: left sidebar + main content */
+    .layout {
+      display: grid;
+      grid-template-columns: 32% 68%;
+      gap: 22px;
+      height: calc(297mm - 10mm*2 - 30px); /* rough full-page height minus paddings */
+    }
+
+    /* Left column styling */
+    .sidebar {
+      background: #f3f6f9;
+      padding: 14px;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .sidebar h3 {
+      margin: 0 0 8px;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      padding-bottom: 6px;
+    }
+    .sidebar ul { margin: 8px 0 0 16px; padding: 0; }
+    .sidebar li { margin-bottom: 6px; font-size: 12.5px; color: #222; }
+
+    /* Main column styling */
+    main {
+      padding: 0 2px;
+    }
+    section {
+      margin-bottom: 14px;
+      page-break-inside: avoid;
+    }
+    section h2 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding-bottom: 6px;
+    }
+
+    .job, .education {
+      margin-bottom: 10px;
+      page-break-inside: avoid;
+    }
+    .job .title, .education .title {
+      font-weight: 700;
+      font-size: 13.2px;
+    }
+    .meta {
+      font-size: 12px;
+      color: #555;
+      margin: 4px 0;
+    }
+    p, li {
+      font-size: 12.6px;
+      line-height: 1.52;
+      margin: 0 0 6px 0;
+    }
+
+    /* Small helpers */
+    .muted { color: #666; font-size: 12px; }
+    .no-bullets { padding: 0; margin: 0; list-style: none; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div>
+      <h1>{{ personal.name }}</h1>
+      <div class="muted">{{ personal.jobTitle or "" }}</div>
+    </div>
+
+    <div class="contact">
+      {{ personal.city }}, {{ personal.country }} · {{ personal.pinCode }}<br>
+      {{ personal.phone }} · {{ personal.email }}
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+      <h3>Skills</h3>
+      {{ skills | safe }}
+
+      <h3 style="margin-top:14px;">Links</h3>
+      <ul>
+        {% for link in links %}
+          <li><strong>{{ link.title }}</strong><br>{{ link.url }}</li>
+        {% endfor %}
+      </ul>
+
+      <h3 style="margin-top:14px;">Extras</h3>
+      <ul class="no-bullets">
+        <li class="muted">Languages: {{ personal.languages or "—" }}</li>
+        <li class="muted">Tools: {{ personal.tools or "—" }}</li>
+      </ul>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <section>
+        <h2>Professional Summary</h2>
+        {{ summary | safe }}
+      </section>
+
+      <section>
+        <h2>Experience</h2>
+        {% for job in experiences %}
+          <div class="job">
+            <div class="title">{{ job.jobTitle }} — {{ job.employer }}</div>
+            <div class="meta">{{ job.city }} | {{ job.startDate }} — {{ job.endDate }}</div>
+            <div>{{ job.responsibilities | safe }}</div>
+          </div>
+        {% endfor %}
+      </section>
+
+      <section>
+        <h2>Education</h2>
+        {% for edu in educations %}
+          <div class="education">
+            <div class="title">{{ edu.degree }} in {{ edu.fieldOfStudy }}</div>
+            <div class="meta">{{ edu.schoolName }}, {{ edu.location }} · Graduation: {{ edu.graduationDate }}</div>
+          </div>
+        {% endfor %}
+      </section>
+    </main>
+  </div>
+</body>
+</html>
